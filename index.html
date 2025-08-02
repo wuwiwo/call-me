@@ -55,8 +55,8 @@
                 zh: {
                     title: "CALL ME",
                     subtitle: "点击下方按钮，我会立即收到通知",
-                    bubble1: "来打熊🐻",
-                    bubble2: "快上线",
+                    bubble1: "快上线",
+                    bubble2: "补护盾",
                     bubble3: "紧急情况",
                     bubble4: "我来领堡垒奖品",
                     countdownText: "请等待 {seconds} 秒后再试",
@@ -67,10 +67,10 @@
                 en: {
                     title: "CALL ME",
                     subtitle: "Click the button below to notify me immediately",
-                    bubble1: "Let's hunt bears 🐻",
-        bubble2: "Get online now",     
-        bubble3: "Emergency",        
-        bubble4: "I'll claim the fort rewards",  // "我来领堡垒奖品"
+                    bubble1: "Get online now",
+                    bubble2: "Shield up",     
+                    bubble3: "Emergency",        
+                    bubble4: "I'll claim the fort rewards",
                     countdownText: "Please wait {seconds} seconds to try again",
                     successMsg: "Sent successfully!",
                     errorMsg: "Failed to send: {error}",
@@ -83,7 +83,7 @@
             let countdownInterval;
             let isRequestPending = false;
             
-            // 从本地存储获取冷却状态
+            // 冷却
             const lastClickTime = localStorage.getItem('lastClickTime');
             if (lastClickTime) {
                 const remainingTime = Math.max(0, 60 - Math.floor((Date.now() - lastClickTime) / 1000));
@@ -92,7 +92,7 @@
                 }
             }
             
-            // 更新语言
+            
             function updateLanguage(lang) {
                 currentLang = lang;
                 const t = translations[lang];
