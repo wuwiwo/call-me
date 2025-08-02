@@ -1,232 +1,194 @@
 :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --accent: #fd79a8;
-            --dark: #2d3436;
-            --light: #f5f6fa;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--light);
-            padding: 20px;
-        }
-        
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        p.subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.4);
-            position: relative;
-            overflow: hidden;
-            margin: 10px;
-            width: 200px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(253, 121, 168, 0.6);
-        }
-        
-        .btn:active {
-            transform: translateY(1px);
-        }
-        
-        .btn:disabled {
-            background: #b2bec3;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .btn::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%, -50%);
-            transform-origin: 50% 50%;
-        }
-        
-        .btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-        
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
-        
-        .countdown {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            height: 20px;
-        }
-        
-        .countdown.show {
-            opacity: 1;
-        }
-        
-        .animation {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .phone {
-            width: 100%;
-            height: 100%;
-            
-            background-size: contain;
-            position: relative;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-        
-        .ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 160px;
-            height: 160px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: pulse 3s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0.5;
-            }
-            70% {
-                transform: translate(-50%, -50%) scale(1.3);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 0;
-            }
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--dark);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification.success {
-            background: #00b894;
-        }
-        
-        .notification.error {
-            background: #d63031;
-        }
-        
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .language-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .language-btn.active {
-            background: var(--accent);
-        }
-        
-        .bubble-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+    --primary: #37352f;
+    --secondary: #f1f1ef;
+    --accent: #37352f;
+    --dark: #2d3436;
+    --light: #ffffff;
+    --notion-gray: #f1f1ef;
+    --notion-dark-gray: #e3e2e0;
+    --notion-text: #37352f;
+    --notion-blue: #337ea9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+    background-color: var(--notion-gray);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--notion-text);
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 
+                0 2px 4px rgba(0,0,0,0.03), 
+                0 4px 8px rgba(0,0,0,0.03);
+    border: 1px solid var(--notion-dark-gray);
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: var(--notion-text);
+}
+
+p.subtitle {
+    font-size: 0.95rem;
+    color: rgba(55, 53, 47, 0.6);
+    margin-bottom: 28px;
+}
+
+.btn {
+    background: var(--notion-text);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+    margin: 8px;
+    width: 180px;
+    text-transform: none;
+}
+
+.btn:hover {
+    transform: none;
+    background: rgba(55, 53, 47, 0.9);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    background: rgba(55, 53, 47, 0.3);
+    cursor: not-allowed;
+}
+
+.countdown {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: rgba(55, 53, 47, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    height: 20px;
+}
+
+.countdown.show {
+    opacity: 1;
+}
+
+.animation {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+    position: relative;
+}
+
+.phone {
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2337352f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>') no-repeat center;
+    background-size: contain;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+    height: 130px;
+    border: 1px solid rgba(55, 53, 47, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 3s infinite;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--notion-text);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateX(150%);
+    transition: transform 0.2s ease;
+    z-index: 1000;
+    font-size: 0.9rem;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: var(--notion-blue);
+}
+
+.language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 6px;
+}
+
+.language-btn {
+    background: rgba(55, 53, 47, 0.08);
+    border: none;
+    color: var(--notion-text);
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+}
+
+.language-btn.active {
+    background: rgba(55, 53, 47, 0.2);
+}
+
+.bubble-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 8px;
+}
