@@ -1,13 +1,16 @@
 :root {
     --primary: #37352f;
     --secondary: #f1f1ef;
-    --accent: #37352f;
-    --dark: #2d3436;
+    --accent: #337ea9;
     --light: #ffffff;
-    --notion-gray: #f1f1ef;
+    --notion-gray: #f7f6f3;
     --notion-dark-gray: #e3e2e0;
     --notion-text: #37352f;
     --notion-blue: #337ea9;
+    --notion-orange: #e9a15a;
+    --notion-border: rgba(55, 53, 47, 0.16);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -17,7 +20,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--notion-gray);
     min-height: 100vh;
     display: flex;
@@ -28,113 +31,203 @@ body {
     line-height: 1.5;
 }
 
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--light);
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.user-info img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--notion-border);
+}
+
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--notion-text);
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+.language-switcher {
+    display: flex;
+    background: rgba(55, 53, 47, 0.08);
+    border-radius: 18px;
+    padding: 4px;
+}
+
+.language-btn {
+    background: none;
+    border: none;
+    color: var(--notion-text);
+    padding: 4px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.language-btn.active {
+    background: var(--light);
+    box-shadow: var(--shadow-sm);
+}
+
 .container {
     background: var(--light);
-    border-radius: 8px;
-    padding: 48px;
+    border-radius: 12px;
+    padding: 40px;
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     text-align: center;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 
-                0 2px 3px rgba(0,0,0,0.03), 
-                0 4px 4px rgba(0,0,0,0.015);
-    border: 1px solid var(--notion-dark-gray);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--notion-border);
+    margin-top: 60px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    margin-bottom: 32px;
 }
 
 h1 {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     margin-bottom: 12px;
     font-weight: 800;
     color: var(--notion-text);
+    letter-spacing: -0.5px;
 }
 
 p.subtitle {
-    font-size: 0.95rem;
-    color: rgba(55, 53, 47, 0.6);
+    font-size: 1rem;
+    color: rgba(55, 53, 47, 0.65);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.bubble-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
     margin-bottom: 28px;
 }
 
 .btn {
-    background: var(--notion-text);
+    background: var(--primary);
     color: white;
     border: none;
-    padding: 12px 24px;
-    font-size: 0.95rem;
-    border-radius: 4px;
+    padding: 16px 20px;
+    font-size: 1rem;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.15s ease;
-    font-weight: 500;
-    letter-spacing: 0.2px;
-    box-shadow: none;
-    position: relative;
-    overflow: hidden;
-    margin: 8px;
-    width: 180px;
-    text-transform: none;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .btn:hover {
-    transform: none;
     background: rgba(55, 53, 47, 0.9);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn:active {
-    transform: scale(0.98);
+    transform: translateY(0);
 }
 
 .btn:disabled {
     background: rgba(55, 53, 47, 0.3);
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 .countdown {
+    background: rgba(55, 53, 47, 0.03);
+    border-radius: 12px;
+    padding: 16px;
     margin-top: 20px;
-    font-size: 0.85rem;
-    color: rgba(55, 53, 47, 0.6);
     opacity: 0;
-    transition: opacity 0.3s ease;
-    height: 20px;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .countdown.show {
     opacity: 1;
+    height: auto;
 }
 
-.animation {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 25px;
-    position: relative;
+.countdown-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: rgba(55, 53, 47, 0.7);
 }
 
-.phone {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-.ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 130px;
-    height: 130px;
-    border: 1px solid rgba(55, 53, 47, 0.2);
+.countdown-info img {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    opacity: 0;
-    animation: pulse 3s infinite;
+    border: 1px solid var(--notion-border);
+}
+
+.countdown-info > div {
+    text-align: left;
+    line-height: 1.4;
+}
+
+#countdownName {
+    font-weight: 600;
+    color: var(--notion-text);
+    display: block;
 }
 
 .notification {
@@ -143,13 +236,17 @@ p.subtitle {
     right: 20px;
     background: var(--notion-text);
     color: white;
-    padding: 12px 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
     transform: translateX(150%);
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1000;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .notification.show {
@@ -160,33 +257,179 @@ p.subtitle {
     background: var(--notion-blue);
 }
 
-.language-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 6px;
+.notification.error {
+    background: #e55050;
 }
 
-.language-btn {
-    background: rgba(55, 53, 47, 0.08);
-    border: none;
-    color: var(--notion-text);
-    padding: 4px 8px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.8rem;
-}
-
-.language-btn.active {
-    background: rgba(55, 53, 47, 0.2);
-}
-
-.bubble-container {
-    display: flex;
-    flex-wrap: wrap;
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    gap: 8px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--light);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--notion-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgba(55, 53, 47, 0.6);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--notion-text);
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--notion-border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--notion-blue);
+}
+
+.avatar-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.avatar-option {
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.avatar-option.active {
+    border-color: var(--notion-blue);
+    transform: scale(1.05);
+}
+
+.avatar-option img {
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    background: rgba(55, 53, 47, 0.03);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: var(--notion-blue);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.save-btn:hover {
+    background: #2a6790;
+}
+
+
+
+/* 增强Notion风格 */
+.container {
+    background: var(--notion-gray);
+    border: 1px solid var(--notion-border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 
+                0 2px 4px rgba(0,0,0,0.03);
+}
+
+.btn {
+    background: white;
+    color: var(--notion-text);
+    border: 1px solid var(--notion-border);
+    transition: all 0.15s ease;
+}
+
+.btn:hover {
+    background: rgba(55,53,47,0.03);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+}
+
+/* Notion风格输入框 */
+.form-group input {
+    background: var(--notion-gray);
+    border-radius: 3px;
+    border: 1px solid var(--notion-border);
+}
+
+/* 更精细的动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content {
+    animation: fadeIn 0.2s ease-out;
 }
