@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalBtn = document.querySelector('.close-btn');
     const saveProfileBtn = document.getElementById('saveProfile');
     const nicknameInput = document.getElementById('nickname');
-    const avatarOptions = document.querySelectorAll('.avatar-option');
+    const emojiOptions = document.querySelectorAll('.emoji-option');
     const modalTitle = document.getElementById('modalTitle');
 
     const webhookUrl = 'https://trigger.macrodroid.com/16c8a69d-d6b2-40f4-9b93-5d76880f3527/webhook';
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let canClick = true;
     let countdownInterval;
     let isRequestPending = false;
-    let selectedAvatar = '1';
+    let selectedEmoji = '🐶';
 
     // 初始化用户资料
     let userProfile = JSON.parse(localStorage.getItem('userProfile')) || null;
@@ -76,25 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!userProfile) {
             showProfileModal(true);
             userNameEl.textContent = translations[currentLang].unregistered;
-            userAvatarEl.src = getAvatarUrl('1');
+            userAvatarEl.textContent = '👤';
             return;
         }
         
         userNameEl.textContent = userProfile.nickname || translations[currentLang].defaultName;
-        userAvatarEl.src = getAvatarUrl(userProfile.avatar);
-    }
-
-    // 获取头像URL（使用内联SVG）
-    function getAvatarUrl(avatarId) {
-        const avatars = {
-            '1': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2UzZTNlMCIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE1IiByPSI0IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1IDI4IEE4IDQgMCAwIDEgMjUgMjgiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+",
-            '2': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2ZmY2NiZCIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE1IiByPSI0IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1IDI3IEE2IDMgMCAwIDEgMjUgMjciIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+",
-            '3': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2IzZGZmZSIvPjxyZWN0IHg9IjEyIiB5PSIxNSIgd2lkdGg9IjMiIGhlaWdodD0iNiIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9IjI1IiB5PSIxNSIgd2lkdGg9IjMiIGhlaWdodD0iNiIgZmlsbD0iIzU1NSIvPjxwYXRoIGQ9Ik0xNSAyOCBBOCA0IDAgMCAxIDI1IDI4IiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==",
-            '4': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2ZmZGQ5OSIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTciIHI9IjMiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE0IDI2IEE4IDUgMCAwIDAgMjYgMjYiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+",
-            '5': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2RkZjBmMyIvPjxwYXRoIGQ9Ik0xNSwxNSBBMiAyIDAgMSwxIDE5LDE1IEEyIDIgMCAwLDEgMTUsMTUiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMjUsMTUgQTIsMiAwIDEsMSAyOSwxNSBBMiwyIDAgMCwxIDI1LDE1IiBmaWxsPSIjNTU1Ii8+PGVsbGlwc2UgY3g9IjIwIiBjeT0iMjUiIHJ4PSI1IiByeT0iMyIgZmlsbD0iIzU1NSIvPjwvc3ZnPg==",
-            '6': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2NjZmZjYyIvPjxwYXRoIGQ9Ik0xNSwxOCBBMiAyIDAgMSwxIDE5LDE4IEEyIDIgMCAwLDEgMTUsMTgiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMjUsMTggQTIsMiAwIDEsMSAyOSwxOCBBMiwyIDAgMCwxIDI1LDE4IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1LDI1IEE2LDQgMCAwLDAgMjUsMjUiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+"
-        };
-        return avatars[avatarId] || avatars['1'];
+        userAvatarEl.textContent = userProfile.emoji || '👤';
     }
 
     // 显示/隐藏模态框
@@ -107,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
         nicknameInput.placeholder = translations[currentLang].nicknamePlaceholder;
         
         // 重置头像选择
-        avatarOptions.forEach(option => {
+        emojiOptions.forEach(option => {
             option.classList.remove('active');
-            if (option.dataset.avatar === (userProfile?.avatar || '1')) {
+            if (option.dataset.emoji === (userProfile?.emoji || '🐶')) {
                 option.classList.add('active');
-                selectedAvatar = option.dataset.avatar;
+                selectedEmoji = option.dataset.emoji;
             }
         });
         
@@ -129,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         userProfile = {
             nickname,
-            avatar: selectedAvatar
+            emoji: selectedEmoji
         };
         
         localStorage.setItem('userProfile', JSON.stringify(userProfile));
@@ -137,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 更新UI
         userNameEl.textContent = userProfile.nickname;
-        userAvatarEl.src = getAvatarUrl(userProfile.avatar);
+        userAvatarEl.textContent = userProfile.emoji;
     }
 
     // 更新语言
@@ -190,9 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 更新倒计时显示
         countdownNameEl.textContent = userProfile ? userProfile.nickname : t.defaultName;
         countdownTextEl.textContent = t.cooldownMsg.replace('{seconds}', seconds);
-        countdownAvatarEl.src = userProfile 
-            ? getAvatarUrl(userProfile.avatar) 
-            : getAvatarUrl('1');
+        countdownAvatarEl.textContent = userProfile 
+            ? userProfile.emoji 
+            : '👤';
 
         countdownInterval = setInterval(() => {
             seconds--;
@@ -228,12 +215,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 头像选择
-    avatarOptions.forEach(option => {
+    // Emoji选择
+    emojiOptions.forEach(option => {
         option.addEventListener('click', () => {
-            avatarOptions.forEach(opt => opt.classList.remove('active'));
+            emojiOptions.forEach(opt => opt.classList.remove('active'));
             option.classList.add('active');
-            selectedAvatar = option.dataset.avatar;
+            selectedEmoji = option.dataset.emoji;
         });
     });
 
@@ -263,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const params = new URLSearchParams({
                     message: message,
                     nickname: userProfile.nickname,
-                    avatar: userProfile.avatar
+                    emoji: userProfile.emoji
                 });
                 
                 const response = await fetch(

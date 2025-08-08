@@ -7,14 +7,14 @@
     <title>Call Me</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="index.css?2.1" rel="stylesheet">
+    <link href="index.css?2.2" rel="stylesheet">
 </head>
 
 <body>
     <!-- 顶部操作栏 -->
     <div class="top-bar">
         <div class="user-info" id="userInfo">
-            <img id="userAvatar" src="" alt="头像">
+            <div id="userAvatar" class="emoji-avatar"></div>
             <span id="userName"></span>
         </div>
         <div class="top-controls">
@@ -51,7 +51,7 @@
 
         <div id="countdown" class="countdown">
             <div class="countdown-info">
-                <img id="countdownAvatar" src="" alt="头像">
+                <div id="countdownAvatar" class="emoji-avatar"></div>
                 <div>
                     <span id="countdownName"></span>
                     <span id="countdownText"></span>
@@ -78,25 +78,16 @@
                 
                 <div class="form-group">
                     <label>选择头像</label>
-                    <div class="avatar-selection">
-                        <div class="avatar-option active" data-avatar="1">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2UzZTNlMCIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE1IiByPSI0IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1IDI4IEE4IDQgMCAwIDEgMjUgMjgiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像1">
-                        </div>
-                        <div class="avatar-option" data-avatar="2">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2ZmY2NiZCIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjQiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE1IiByPSI0IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1IDI3IEE2IDMgMCAwIDEgMjUgMjciIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像2">
-                        </div>
-                        <div class="avatar-option" data-avatar="3">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2IzZGZmZSIvPjxyZWN0IHg9IjEyIiB5PSIxNSIgd2lkdGg9IjMiIGhlaWdodD0iNiIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9IjI1IiB5PSIxNSIgd2lkdGg9IjMiIGhlaWdodD0iNiIgZmlsbD0iIzU1NSIvPjxwYXRoIGQ9Ik0xNSAyOCBBOCA0IDAgMCAxIDI1IDI4IiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==" alt="头像3">
-                        </div>
-                        <div class="avatar-option" data-avatar="4">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2ZmZGQ5OSIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTciIHI9IjMiIGZpbGw9IiM1NTUiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE0IDI2IEE4IDUgMCAwIDAgMjYgMjYiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像4">
-                        </div>
-                        <div class="avatar-option" data-avatar="5">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2RkZjBmMyIvPjxwYXRoIGQ9Ik0xNSwxNSBBMiAyIDAgMSwxIDE5LDE1IEEyIDIgMCAwLDEgMTUsMTUiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMjUsMTUgQTIsMiAwIDEsMSAyOSwxNSBBMiwyIDAgMCwxIDI1LDE1IiBmaWxsPSIjNTU1Ii8+PGVsbGlwc2UgY3g9IjIwIiBjeT0iMjUiIHJ4PSI1IiByeT0iMyIgZmlsbD0iIzU1NSIvPjwvc3ZnPg==" alt="头像5">
-                        </div>
-                        <div class="avatar-option" data-avatar="6">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI2NjZmZjYyIvPjxwYXRoIGQ9Ik0xNSwxOCBBMiAyIDAgMSwxIDE5LDE4IEEyIDIgMCAwLDEgMTUsMTgiIGZpbGw9IiM1NTUiLz48cGF0aCBkPSJNMjUsMTggQTIsMiAwIDEsMSAyOSwxOCBBMiwyIDAgMCwxIDI1LDE4IiBmaWxsPSIjNTU1Ii8+PHBhdGggZD0iTTE1LDI1IEE2LDQgMCAwLDAgMjUsMjUiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PC9zdmc+" alt="头像6">
-                        </div>
+                    <div class="emoji-selection">
+                        <div class="emoji-option active" data-emoji="🐶">🐶</div>
+                        <div class="emoji-option" data-emoji="🐼">🐼</div>
+                        <div class="emoji-option" data-emoji="🦊">🦊</div>
+                        <div class="emoji-option" data-emoji="🐯">🐯</div>
+                        <div class="emoji-option" data-emoji="🦁">🦁</div>
+                        <div class="emoji-option" data-emoji="🐨">🐨</div>
+                        <div class="emoji-option" data-emoji="🐵">🐵</div>
+                        <div class="emoji-option" data-emoji="🐧">🐧</div>
+                        <div class="emoji-option" data-emoji="🦄">🦄</div>
                     </div>
                 </div>
             </div>
@@ -106,7 +97,7 @@
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <script src="index.js?2"></script>
 </body>
 
 </html>
