@@ -1,0 +1,85 @@
+/* 历史记录页面样式 */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.history-item {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    border: 1px solid var(--notion-border);
+    transition: all 0.2s ease;
+}
+
+.history-item:hover {
+    background: var(--notion-gray);
+}
+
+.history-emoji {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(55,53,47,0.05);
+}
+
+.history-content {
+    flex: 1;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.history-name {
+    font-weight: 600;
+}
+
+.history-time {
+    color: rgba(55,53,47,0.6);
+    font-size: 0.85rem;
+}
+
+.history-message {
+    margin-bottom: 8px;
+}
+
+.history-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.history-status .fa-check {
+    color: var(--notion-blue);
+}
+
+.history-status .fa-times {
+    color: #e55050;
+}
+
+.history-item.success {
+    border-left: 3px solid var(--notion-blue);
+}
+
+.history-item.error {
+    border-left: 3px solid #e55050;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+    color: rgba(55,53,47,0.6);
+}
