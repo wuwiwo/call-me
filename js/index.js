@@ -1,6 +1,7 @@
 // index.js
 import { CONFIG } from './config.js';
 import { TRANSLATIONS } from './translations.js';
+import { soundManager } from './sounds.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // DOM元素引用
@@ -142,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 修改 notification 对象
 const notification = {
     show(message, isSuccess = true) {
+      soundManager.playNotificationSound(isSuccess); // 播放通知音效
         const icon = isSuccess ? 'paper-plane' : 'times-circle';
         const statusClass = isSuccess ? 'sent' : 'error';
         
@@ -209,10 +211,20 @@ const notification = {
     };
 
     // 初始化
-    const init = () => {
+    const init = async() => {
+      await soundManager.preload();
         profile.load();
         
         // 事件监听
+        //点击音效
+        elements.userAvatarEl.addEventListener('click', () => {
+    try {
+      soundManager.playAvatarSound(state.userProfile?.emoji || CONFIG.defaultAvatar);
+    } catch (e) {
+      console.warn("音效播放失败:", e);
+    }
+  });
+  //切换翻译
         elements.langZhBtn.addEventListener('click', () => language.update('zh'));
         elements.langEnBtn.addEventListener('click', () => language.update('en'));
         elements.editProfileBtn.addEventListener('click', () => profile.showModal(false));
