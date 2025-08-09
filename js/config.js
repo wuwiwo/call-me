@@ -21,7 +21,7 @@ export const CONFIG = {
             
             "🐱": "sounds/cat-meow.mp3",
             "🦊": "sounds/fox-sound.mp3",
-            "🐯": "/sounds/tiger-roar.wav",
+            "🐯": "sounds/tiger-roar.wav",
             default: "sounds/default-click.m4a"
         },
         // 操作反馈音效
