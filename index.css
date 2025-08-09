@@ -18,6 +18,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* 去除所有元素的点击高亮 */
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* 针对按钮特别处理（可选） */
+button, .bubble-btn {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    user-select: none; /* 防止文字被选中 */
+}
 
 body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -144,7 +156,90 @@ h1 {
     color: var(--notion-text);
     letter-spacing: -0.5px;
 }
+/* 动态标题效果 */
+.dynamic-title {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  font-weight: 800;
+  color: var(--notion-text);
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: colorShift 8s infinite alternate;
+}
 
+/* 霓虹文字效果 */
+.dynamic-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--notion-blue),
+    #e9a15a,
+    #d35fb0,
+    var(--notion-blue)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* 微妙的浮动效果 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* 颜色变化 */
+@keyframes colorShift {
+  0% { color: var(--notion-text); }
+  25% { color: var(--notion-blue); }
+  50% { color: #e9a15a; }
+  75% { color: #d35fb0; }
+  100% { color: var(--notion-text); }
+}
+
+/* 光晕效果 */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* 添加3D阴影效果 */
+.dynamic-title {
+  text-shadow: 
+    1px 1px 0 rgba(55,53,47,0.1),
+    2px 2px 0 rgba(55,53,47,0.1),
+    3px 3px 0 rgba(55,53,47,0.1);
+  transition: all 0.3s ease;
+}
+
+.dynamic-title:hover {
+  transform: scale(1.02);
+  text-shadow: 
+    2px 2px 0 rgba(55,53,47,0.15),
+    4px 4px 0 rgba(55,53,47,0.1),
+    6px 6px 0 rgba(55,53,47,0.05);
+}
+@media (max-width: 600px) {
+  .dynamic-title {
+    font-size: 2.8rem;
+    animation: colorShift 12s infinite alternate;
+  }
+  
+  .dynamic-title::after {
+    animation: shine 4s linear infinite;
+  }
+}
 p.subtitle {
     font-size: 1rem;
     color: rgba(55, 53, 47, 0.65);
