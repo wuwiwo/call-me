@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const nicknameInput = document.getElementById('nickname');
     const emojiOptions = document.querySelectorAll('.emoji-option');
     const modalTitle = document.getElementById('modalTitle');
+  
+  
+const historyData = JSON.parse(localStorage.getItem('notificationHistory')) || [];
 
     const webhookUrl = 'https://trigger.macrodroid.com/16c8a69d-d6b2-40f4-9b93-5d76880f3527/webhook';
 
@@ -226,7 +229,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 保存资料
     saveProfileBtn.addEventListener('click', saveProfile);
+// 在发送成功/失败时添加记录
+function addHistoryRecord(message, isSuccess) {
+    const history = JSON.parse(localStorage.getItem('notificationHistory')) || [];
+    
+    history.unshift({
+        timestamp: new Date().toISOString(),
+        message,
+        nickname: userProfile?.nickname || '未绑定用户',
+        emoji: userProfile?.emoji || '👤',
+        status: isSuccess ? 'success' : 'error'
+    });
 
+    localStorage.setItem('notificationHistory', JSON.stringify(history.slice(0, 100))); // 限制100条
+}
     // 气泡按钮点击事件
     notifyBtns.forEach(btn => {
         btn.addEventListener('click', async function() {
@@ -252,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     nickname: userProfile.nickname,
                     emoji: userProfile.emoji
                 });
-                
+                addHistoryRecord(message, true);
                 const response = await fetch(
                     `${webhookUrl}?${params}`, {
                         method: 'GET'
@@ -266,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 const t = translations[currentLang];
                 showNotification(t.errorMsg.replace('{error}', error.message), false);
+                addHistoryRecord(message, false);
             } finally {
                 isRequestPending = false;
             }
@@ -280,4 +297,11 @@ document.addEventListener('DOMContentLoaded', function() {
             startCountdown(remainingTime);
         }
     }
+    // 添加历史记录按钮 (在top-bar添加)
+const historyBtn = document.createElement('button');
+historyBtn.className = 'icon-btn';
+historyBtn.title = '历史记录';
+historyBtn.innerHTML = '<i class="fas fa-history"></i>';
+historyBtn.addEventListener('click', () => window.location.href = 'history.html');
+document.querySelector('.top-controls').prepend(historyBtn);
 });
