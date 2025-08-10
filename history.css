@@ -83,3 +83,70 @@
     padding: 40px 0;
     color: rgba(55,53,47,0.6);
 }
+/* 历史记录容器 */
+.history-item {
+  display: flex;
+  align-items: flex-start; /* 顶部对齐 */
+  gap: 12px; /* 元素间距 */
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 头像/emoji区域 */
+.history-emoji {
+  flex: 0 0 36px; /* 固定宽度 */
+  font-size: 24px;
+  text-align: center;
+}
+
+/* 内容区域 */
+.history-content {
+  flex: 1; /* 占据剩余空间 */
+  min-width: 0; /* 防止文本溢出 */
+}
+
+/* 头部信息（名称+时间） */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; /* 文字基线对齐 */
+  margin-bottom: 4px;
+}
+
+/* 用户名 */
+.history-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+/* 时间显示 */
+.history-time {
+  color: #666;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+/* 消息正文 */
+.history-message {
+  word-break: break-word; /* 允许单词内断行 */
+  line-height: 1.4;
+  text-align: left;
+  margin-right: auto;
+}
+/* 确保时间显示不会换行 */
+.history-time {
+    white-space: nowrap;
+    font-size: 0.85em;
+    color: var(--notion-text-secondary);
+}
+
+/* 小屏幕优化 */
+@media (max-width: 600px) {
+    .history-time {
+        font-size: 0.75em;
+    }
+}
+
