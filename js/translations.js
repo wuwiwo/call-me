@@ -25,7 +25,11 @@ export const TRANSLATIONS = {
             editTitle: "编辑资料",
             nicknamePlaceholder: "输入你的昵称",
             saveBtn: "保存信息",
-            avatarLabel: "选择头像"
+            avatarLabel: "选择头像",
+            customButton: "自定义按钮",
+            buttonTextPlaceholder: "按钮文字(最多{maxLength}字)",
+            randomIcon: "随机图标",
+            confirmReset: "确定要重置为默认按钮吗？"
         },
         time: {
             justNow: "刚刚",

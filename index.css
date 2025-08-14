@@ -538,3 +538,148 @@ p.subtitle {
 .modal-content {
     animation: fadeIn 0.2s ease-out;
 }
+
+
+/* 添加按钮编辑样式 */
+.icon-selector {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: 1px solid var(--notion-border);
+  border-radius: 4px;
+  background: var(--notion-gray);
+}
+
+.bubble-container {
+    display: flex;
+    flex-direction: column; /* 改为垂直排列 */
+    gap: 12px; /* 按钮间距 */
+    margin-bottom: 24px;
+    width: 100%; /* 确保容器宽度填满 */
+}
+
+
+.bubble-container .btn {
+    width: 100%;
+    padding: 16px; /* 增加内边距使按钮更大 */
+}
+
+/* 自定义按钮表单样式 */
+.custom-button-form {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: rgba(55,53,47,0.05);
+  border-radius: 8px;
+}
+
+.remove-custom-btn {
+  background: none;
+  border: none;
+  color: #e55050;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+/* 模态框内容区域 */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh; /* 限制最大高度 */
+}
+
+/* 模态框主体（可滚动区域） */
+.modal-body {
+  flex: 1;
+  overflow-y: auto; /* 允许垂直滚动 */
+  padding-bottom: 60px; /* 为底部按钮留空间 */
+}
+
+/* 自定义按钮表单样式 */
+.custom-button-form {
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(55,53,47,0.03);
+  border-radius: 8px;
+  border: 1px solid var(--notion-border);
+}
+
+/* 固定在底部的操作按钮 */
+.modal-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--light);
+  padding: 15px;
+  border-top: 1px solid var(--notion-border);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+/* 添加按钮的容器 */
+.add-button-container {
+  padding: 15px 0;
+  border-top: 1px solid var(--notion-border);
+  margin-top: auto; /* 推到内容底部 */
+}
+
+
+/* 自定义滚动条样式 */
+#customButtonsArea::-webkit-scrollbar {
+  width: 6px;
+}
+#customButtonsArea::-webkit-scrollbar-thumb {
+  background: rgba(55,53,47,0.2);
+  border-radius: 3px;
+}
+
+
+/* 自定义按钮表单样式 */
+.custom-button-form {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: rgba(55,53,47,0.03);
+    border-radius: 8px;
+    border: 1px solid var(--notion-border);
+}
+
+.custom-btn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.custom-btn-label {
+    font-weight: 600;
+    color: var(--notion-text);
+}
+
+.remove-custom-btn {
+    background: none;
+    border: none;
+    color: #e55050;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.remove-custom-btn:hover {
+    background: rgba(229, 80, 80, 0.1);
+    transform: scale(1.1);
+}
+
+.remove-custom-btn i {
+    font-size: 14px;
+}
+
+.custom-btn-controls {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .custom-btn-controls {
+        grid-template-columns: 1fr;
+    }
+}
