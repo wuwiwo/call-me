@@ -25,14 +25,20 @@
 }
 
 /* 针对按钮特别处理（可选） */
-button, .bubble-btn {
+button,
+.bubble-btn {
     -webkit-tap-highlight-color: transparent;
     outline: none;
     user-select: none; /* 防止文字被选中 */
 }
 
 body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family:
+        "Montserrat",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
     background-color: var(--notion-gray);
     min-height: 100vh;
     display: flex;
@@ -130,14 +136,16 @@ body {
 .container {
     background: var(--light);
     border-radius: 12px;
-    padding: 40px;
+    padding: 32px;
     width: 100%;
     max-width: 480px;
     text-align: center;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--notion-border);
     margin-top: 60px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .container:hover {
@@ -158,87 +166,104 @@ h1 {
 }
 /* 动态标题效果 */
 .dynamic-title {
-  font-size: 3rem;
-  margin-bottom: 12px;
-  font-weight: 800;
-  color: var(--notion-text);
-  letter-spacing: -0.5px;
-  position: relative;
-  display: inline-block;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: colorShift 8s infinite alternate;
+    font-size: 3rem;
+    margin-bottom: 12px;
+    font-weight: 800;
+    color: var(--notion-text);
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: colorShift 8s infinite alternate;
 }
 
 /* 霓虹文字效果 */
 .dynamic-title::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--notion-blue),
-    #e9a15a,
-    #d35fb0,
-    var(--notion-blue)
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shine 3s linear infinite;
-  opacity: 0.7;
-  z-index: -1;
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--notion-blue),
+        #e9a15a,
+        #d35fb0,
+        var(--notion-blue)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+    opacity: 0.7;
+    z-index: -1;
 }
 
 /* 微妙的浮动效果 */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 /* 颜色变化 */
 @keyframes colorShift {
-  0% { color: var(--notion-text); }
-  25% { color: var(--notion-blue); }
-  50% { color: #e9a15a; }
-  75% { color: #d35fb0; }
-  100% { color: var(--notion-text); }
+    0% {
+        color: var(--notion-text);
+    }
+    25% {
+        color: var(--notion-blue);
+    }
+    50% {
+        color: #e9a15a;
+    }
+    75% {
+        color: #d35fb0;
+    }
+    100% {
+        color: var(--notion-text);
+    }
 }
 
 /* 光晕效果 */
 @keyframes shine {
-  to { background-position: 200% center; }
+    to {
+        background-position: 200% center;
+    }
 }
 
 /* 添加3D阴影效果 */
 .dynamic-title {
-  text-shadow: 
-    1px 1px 0 rgba(55,53,47,0.1),
-    2px 2px 0 rgba(55,53,47,0.1),
-    3px 3px 0 rgba(55,53,47,0.1);
-  transition: all 0.3s ease;
+    text-shadow:
+        1px 1px 0 rgba(55, 53, 47, 0.1),
+        2px 2px 0 rgba(55, 53, 47, 0.1),
+        3px 3px 0 rgba(55, 53, 47, 0.1);
+    transition: all 0.3s ease;
 }
 
 .dynamic-title:hover {
-  transform: scale(1.02);
-  text-shadow: 
-    2px 2px 0 rgba(55,53,47,0.15),
-    4px 4px 0 rgba(55,53,47,0.1),
-    6px 6px 0 rgba(55,53,47,0.05);
+    transform: scale(1.02);
+    text-shadow:
+        2px 2px 0 rgba(55, 53, 47, 0.15),
+        4px 4px 0 rgba(55, 53, 47, 0.1),
+        6px 6px 0 rgba(55, 53, 47, 0.05);
 }
 @media (max-width: 600px) {
-  .dynamic-title {
-    font-size: 2.8rem;
-    animation: colorShift 12s infinite alternate;
-  }
-  
-  .dynamic-title::after {
-    animation: shine 4s linear infinite;
-  }
+    .dynamic-title {
+        font-size: 2.8rem;
+        animation: colorShift 12s infinite alternate;
+    }
+
+    .dynamic-title::after {
+        animation: shine 4s linear infinite;
+    }
 }
 p.subtitle {
     font-size: 1rem;
@@ -299,7 +324,7 @@ p.subtitle {
     transition: all 0.3s ease;
 }
 
-.countdown.show {
+.countdown.active {
     opacity: 1;
     height: auto;
 }
@@ -501,13 +526,13 @@ p.subtitle {
     background: #2a6790;
 }
 
-
 /* 增强Notion风格 */
 .container {
     background: var(--notion-gray);
     border: 1px solid var(--notion-border);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 
-                0 2px 4px rgba(0,0,0,0.03);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.03),
+        0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 .btn {
@@ -518,8 +543,8 @@ p.subtitle {
 }
 
 .btn:hover {
-    background: rgba(55,53,47,0.03);
-    box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+    background: rgba(55, 53, 47, 0.03);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
 }
 
 /* Notion风格输入框 */
@@ -531,23 +556,28 @@ p.subtitle {
 
 /* 更精细的动画效果 */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-content {
     animation: fadeIn 0.2s ease-out;
 }
 
-
 /* 添加按钮编辑样式 */
 .icon-selector {
-  width: 100%;
-  padding: 8px;
-  margin-top: 8px;
-  border: 1px solid var(--notion-border);
-  border-radius: 4px;
-  background: var(--notion-gray);
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid var(--notion-border);
+    border-radius: 4px;
+    background: var(--notion-gray);
 }
 
 .bubble-container {
@@ -558,7 +588,6 @@ p.subtitle {
     width: 100%; /* 确保容器宽度填满 */
 }
 
-
 .bubble-container .btn {
     width: 100%;
     padding: 16px; /* 增加内边距使按钮更大 */
@@ -566,77 +595,74 @@ p.subtitle {
 
 /* 自定义按钮表单样式 */
 .custom-button-form {
-  margin-bottom: 15px;
-  padding: 15px;
-  background: rgba(55,53,47,0.05);
-  border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: rgba(55, 53, 47, 0.05);
+    border-radius: 8px;
 }
 
 .remove-custom-btn {
-  background: none;
-  border: none;
-  color: #e55050;
-  cursor: pointer;
-  margin-left: 10px;
+    background: none;
+    border: none;
+    color: #e55050;
+    cursor: pointer;
+    margin-left: 10px;
 }
-
 
 /* 模态框内容区域 */
 .modal-content {
-  display: flex;
-  flex-direction: column;
-  max-height: 80vh; /* 限制最大高度 */
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh; /* 限制最大高度 */
 }
 
 /* 模态框主体（可滚动区域） */
 .modal-body {
-  flex: 1;
-  overflow-y: auto; /* 允许垂直滚动 */
-  padding-bottom: 60px; /* 为底部按钮留空间 */
+    flex: 1;
+    overflow-y: auto; /* 允许垂直滚动 */
+    padding-bottom: 60px; /* 为底部按钮留空间 */
 }
 
 /* 自定义按钮表单样式 */
 .custom-button-form {
-  margin: 15px 0;
-  padding: 15px;
-  background: rgba(55,53,47,0.03);
-  border-radius: 8px;
-  border: 1px solid var(--notion-border);
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(55, 53, 47, 0.03);
+    border-radius: 8px;
+    border: 1px solid var(--notion-border);
 }
 
 /* 固定在底部的操作按钮 */
 .modal-footer {
-  position: sticky;
-  bottom: 0;
-  background: var(--light);
-  padding: 15px;
-  border-top: 1px solid var(--notion-border);
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    bottom: 0;
+    background: var(--light);
+    padding: 15px;
+    border-top: 1px solid var(--notion-border);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* 添加按钮的容器 */
 .add-button-container {
-  padding: 15px 0;
-  border-top: 1px solid var(--notion-border);
-  margin-top: auto; /* 推到内容底部 */
+    padding: 15px 0;
+    border-top: 1px solid var(--notion-border);
+    margin-top: auto; /* 推到内容底部 */
 }
-
 
 /* 自定义滚动条样式 */
 #customButtonsArea::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 #customButtonsArea::-webkit-scrollbar-thumb {
-  background: rgba(55,53,47,0.2);
-  border-radius: 3px;
+    background: rgba(55, 53, 47, 0.2);
+    border-radius: 3px;
 }
-
 
 /* 自定义按钮表单样式 */
 .custom-button-form {
     margin-bottom: 16px;
     padding: 12px;
-    background: rgba(55,53,47,0.03);
+    background: rgba(55, 53, 47, 0.03);
     border-radius: 8px;
     border: 1px solid var(--notion-border);
 }
@@ -681,5 +707,248 @@ p.subtitle {
 @media (max-width: 480px) {
     .custom-btn-controls {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 按钮编辑器模态框修正 ===== */
+#buttonEditModal .modal-content {
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#buttonEditModal .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+#customButtonsArea {
+    max-height: none;
+    overflow-y: visible;
+}
+
+/* 修正自定义按钮表单样式 */
+.custom-button-form {
+    background: rgba(55, 53, 47, 0.03);
+    border: 1px solid var(--notion-border);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #e55050;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* 修正按钮布局 */
+.bubble-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bubble-btn {
+    width: 100%;
+    padding: 16px;
+    justify-content: center;
+}
+
+/* 确保编辑按钮可见 */
+.edit-buttons-btn {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--notion-text);
+}
+
+.edit-buttons-btn:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+/* 确保编辑按钮样式 */
+#editButtons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+/* 按钮限制提示样式 */
+.button-limit-hint {
+    font-size: 0.8rem;
+    color: rgba(55, 53, 47, 0.6);
+    margin-top: 5px;
+}
+
+
+/* ===== 修复 bubble-btn 样式 ===== */
+.bubble-btn {
+    background: white;
+    color: var(--notion-text);
+    border: 1px solid var(--notion-border);
+    padding: 16px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    width: 100%;
+    text-align: center;
+    min-height: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bubble-btn:hover {
+    background: rgba(55, 53, 47, 0.03);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.05),
+        0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+.bubble-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.bubble-btn .bubble-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.bubble-btn i {
+    font-size: 18px;
+    min-width: 20px;
+}
+
+.bubble-btn span {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Notion 风格的悬停效果 */
+.bubble-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(55, 53, 47, 0.05) 0%,
+        rgba(55, 53, 47, 0.02) 50%,
+        rgba(55, 53, 47, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.bubble-btn:hover::before {
+    opacity: 1;
+}
+
+/* 禁用状态 */
+.bubble-btn:disabled {
+    background: rgba(55, 53, 47, 0.1);
+    color: rgba(55, 53, 47, 0.4);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.bubble-btn:disabled::before {
+    display: none;
+}
+
+/* ===== 修复 bubble-btn 布局 ===== */
+.bubble-btn {
+    background: white;
+    color: var(--notion-text);
+    border: 1px solid var(--notion-border);
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 整个按钮内容居中 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    width: 100%;
+    min-height: 60px;
+    position: relative;
+    overflow: hidden;
+    gap: 8px; /* 图标和文字之间的间距 */
+}
+
+.bubble-btn .bubble-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; /* 改为自动宽度 */
+    gap: 8px; /* 保持一致 */
+}
+
+.bubble-btn i {
+    font-size: 18px;
+    flex-shrink: 0; /* 防止图标缩放 */
+}
+
+.bubble-btn span {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    flex-shrink: 0; /* 防止文字缩放 */
+}
+
+/* 确保整体居中 */
+.bubble-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+    align-items: center; /* 确保所有按钮居中 */
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+    .bubble-btn {
+        padding: 14px 16px;
+        gap: 6px;
+    }
+    
+    .bubble-btn i {
+        font-size: 16px;
     }
 }
